@@ -1,9 +1,12 @@
+import React, { Fragment } from "react";
 import styled from "styled-components";
+import { GridLayout } from "./components/gridLayout";
 import {
   GRID_BACKGROUND_DEFAULT_COLOR,
   SECTION_DEFAULT_COLOR,
 } from "./constants/defaults";
 import { License } from "./constants/license";
+import { GlobalStyle } from "./styles/globalStyle";
 import { resolveGridBuild } from "./helpers/layout-helper";
 
 interface ISectionWithGridProps {
@@ -25,8 +28,12 @@ const SectionWithGrid = styled.section`
 export default function Root(props) {
   console.log("ROOT COMPONENT PROPS: ", props);
   return (
-    <SectionWithGrid agileEstimation={props.agileEstimation}>
-      {props.name} is mounted!
-    </SectionWithGrid>
+    <Fragment>
+      <GlobalStyle />
+      <SectionWithGrid agileEstimation={props.agileEstimation}>
+        <h1>{props.name} is mounted!</h1>
+        <GridLayout />
+      </SectionWithGrid>
+    </Fragment>
   );
 }
